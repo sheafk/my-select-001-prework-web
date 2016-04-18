@@ -1,11 +1,12 @@
-def my_select(array)
-  i = 0
-  new_array = []
-  while i < array.length
-    if (yield(array[i]))
-      new_array << array[i]
-    end
-    i+=1
-  end
-  new_array
+def my_select(i)
+  def my_each
+		i = 0
+		while i < self.size
+			yield(self[i])
+			i += 1
+		end
+		selected = []
+		self.my_each { |i| selected.push(i) if yield(i) }
+		selected
+	end
 end
